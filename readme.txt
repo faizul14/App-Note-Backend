@@ -18,7 +18,7 @@ npm install nanoid
 =======================
 || cara menggunakan. ||
 =======================
-git clone https://github.com/faizul14/App-Note-Backend.git
+git clone link github
 npm install
 npm run start-dev (on development)
 npm run start-prod (on production)
