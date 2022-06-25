@@ -10,4 +10,5 @@ const route = [
 ];
 
 //export
-module.exports = route;
+// module.exports = route;
+export {route};
