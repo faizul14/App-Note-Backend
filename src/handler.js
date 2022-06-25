@@ -1,9 +1,12 @@
-const {nanoId}  = require('nanoid');
-const notes = require('./note');
+// const {nanoId}  = require('nanoid');
+// const notes = require('./note');
+//penulisan ES6MODULE
+import { nanoid } from "nanoid"; "nanoid";
+import notes from "./note.js";
 
 const addNoteHandler = (request, h) => {
     const {tittle , tags, body} = request.payload;
-    const id = nanoId (16);
+    const id = nanoid (16);
     const craeteAt = new Date().toISOString();
     const updateAt = craeteAt;
 
@@ -40,4 +43,6 @@ const addNoteHandler = (request, h) => {
 };
 
 
-module.exports = {addNoteHandler};
+// module.exports = {addNoteHandler};
+//penulisan ES6MODULE
+export {addNoteHandler};

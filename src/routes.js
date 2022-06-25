@@ -1,4 +1,6 @@
-const { addNoteHandler } = require("./handler");
+// const { addNoteHandler } = require("./handler");
+//penulisan ES6MODULE
+import { addNoteHandler } from "./handler.js";
 
 //route
 const route = [
@@ -11,4 +13,5 @@ const route = [
 
 //export
 // module.exports = route;
+//penulisan ES6MODULE
 export {route};
