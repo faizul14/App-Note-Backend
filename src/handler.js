@@ -42,7 +42,15 @@ const addNoteHandler = (request, h) => {
     return response;
 };
 
+const testHandler = (request, h) => {
+    const response = h.response({
+        status : 'succes',
+        message : 'Sever succes berjalan',
+    });
+    response.code(200);
+    return response;
+}
 
 // module.exports = {addNoteHandler};
 //penulisan ES6MODULE
-export {addNoteHandler};
+export {addNoteHandler, testHandler};
