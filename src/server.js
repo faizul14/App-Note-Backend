@@ -7,11 +7,13 @@ import {route} from "./routes.js";
 const init = async () => {
     const server = Hapi.server({
         port : 5000,
-        host : 'localhost',
+        // host : 'localhost',
+        //penggunaan host fleksibel untuk di gunakan di level development dan production
+          host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
         //same-origin policy
-        routes : {
-            cors : {
-                origin: ['*'],
+        routes: {
+            cors: {
+            origin: ['*'],
             },
         },
     });

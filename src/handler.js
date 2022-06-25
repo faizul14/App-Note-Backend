@@ -1,7 +1,7 @@
 // const {nanoId}  = require('nanoid');
 // const notes = require('./note');
 //penulisan ES6MODULE
-import { nanoid } from "nanoid"; "nanoid";
+import { nanoid } from "nanoid";
 import notes from "./note.js";
 
 const addNoteHandler = (request, h) => {
@@ -49,8 +49,69 @@ const testHandler = (request, h) => {
     });
     response.code(200);
     return response;
+};
+
+const getAllNoteHandler = () => ({
+    status : 'succes',
+    data : {
+        notes
+    },
+});
+
+const getNoteByIdHandler = (request, h) => {
+    const {id} = request.params;
+
+    const note = notes.filter((n) => n.id === id)[0];
+
+    return {
+        status : 'succesd',
+        message : `Data berhasil di load berdasarkan id ${id}`,
+        data : {
+            notes,
+        },
+    };
+    const response = h.response({
+        status : 'fail',
+        message : 'catatan tidak di temukan',
+    });
+
+    response.code(404);
+    return response;
+};
+
+const updateByIdHandler = (request, h) => {
+    const {id} = request.params;
+
+    const {tittle , tags , body} = request.payload;
+    const updateAt = new Date().toISOString();
+
+    const index = notes.findIndex((n) => n.id === id);
+    if(index !== -1){
+        notes[index] = {
+            ...notes[index],
+            tittle,
+            tags,
+            body,
+            updateAt,
+        };
+
+        const response = h.response({
+            status : 'succes',
+            message : 'data berhasil di ubahd',
+
+        });
+        response.code(200);
+        return response;
+    }
+
+    const response = h.response({
+        status : 'fail',
+        message : 'gagal mengubah data',
+    });
+    response.code(404);
+    return response;
 }
 
 // module.exports = {addNoteHandler};
 //penulisan ES6MODULE
-export {addNoteHandler, testHandler};
+export {addNoteHandler, testHandler, getAllNoteHandler , getNoteByIdHandler, updateByIdHandler};
