@@ -1,6 +1,6 @@
 // const { addNoteHandler } = require("./handler");
 //penulisan ES6MODULE
-import { addNoteHandler , testHandler , getAllNoteHandler , getNoteByIdHandler , updateByIdHandler} from "./handler.js";
+import { addNoteHandler , testHandler , getAllNoteHandler , getNoteByIdHandler , updateByIdHandler, deleteById} from "./handler.js";
 
 //route
 const route = [
@@ -32,7 +32,7 @@ const route = [
     {
         method : 'DELETE',
         path : '/notes/{id}',
-        handler : () => {},
+        handler : deleteById,
     },
 ];
 

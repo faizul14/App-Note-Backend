@@ -112,6 +112,32 @@ const updateByIdHandler = (request, h) => {
     return response;
 }
 
+const deleteById = (request, h) => {
+    const {id} = request.params;
+
+    const index = notes.findIndex((n) => n.id === id);
+
+    if (index !== -1){
+        notes.splice(index, 1);
+
+        const response = h.response({
+            status : 'success',
+            message : 'data berhasil di hapus',
+        });
+        response.code(200);
+        return response;
+    }
+
+    const response = h.response({
+            status : 'fail',
+            message : 'data gagal di  hapus, id tidak di temukan',
+        });
+        response.code(404);
+        return response;
+}
+
+
+
 // module.exports = {addNoteHandler};
 //penulisan ES6MODULE
-export {addNoteHandler, testHandler, getAllNoteHandler , getNoteByIdHandler, updateByIdHandler};
+export {addNoteHandler, testHandler, getAllNoteHandler , getNoteByIdHandler, updateByIdHandler, deleteById};
